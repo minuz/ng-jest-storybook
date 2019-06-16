@@ -17,7 +17,9 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "hello": ["dist/hello"],
-      "hello/*": ["dist/hello/*"]
+      "hello/*": ["dist/hello/*"],
+      "@lumen/app-layout": ["dist/lumen/app-layout"],
+      "@lumen/app-layout/*": ["dist/lumen/app-layout/*"]
     }
   }
 }

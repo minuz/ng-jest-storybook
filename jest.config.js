@@ -1,7 +1,6 @@
 module.exports = {
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/setup.jest.ts'],
-  roots: ['<rootDir>/src', '<rootDir>/projects'],
   testPathIgnorePatterns: [
     '/node_modules/',
     '/storybook-static/',
@@ -9,6 +8,7 @@ module.exports = {
     'dist'
   ],
   modulePaths: ['<rootDir>/dist'],
+  roots: ['<rootDir>/src', '<rootDir>/projects'],
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'cobertura'],

@@ -1,7 +1,11 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppLayoutModule } from '@lumen/app-layout';
+
 import { AppComponent } from './app.component';
-import { HelloModule } from 'hello';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -9,8 +13,13 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HelloModule],
-      declarations: [AppComponent]
+      imports: [
+        RouterTestingModule,
+        AppLayoutModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule
+      ]
     }).compileComponents();
   }));
 
@@ -32,13 +41,6 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain(
       'Welcome to ng-jest-storybook!'
-    );
-  });
-
-  test(`should render 'hello works!'`, () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p#lib-hello').textContent).toContain(
-      'hello works!'
     );
   });
 });

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppLayoutComponent layout functionality Should be able to close left sidenav 1`] = `
+<div
+  id="root1"
+  ng-version="8.0.1"
+>
+  <mat-toolbar
+    class="mat-toolbar mat-toolbar-single-row"
+  />
+  <mat-sidenav-container
+    class="wrapper mat-drawer-container mat-sidenav-container"
+  >
+    
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <mat-sidenav
+      class="mat-drawer mat-sidenav ng-tns-c5-0 ng-trigger ng-trigger-transform mat-drawer-side ng-star-inserted ng-animating"
+      mode="side"
+      ng-reflect-mode="side"
+      ng-reflect-opened="false"
+      ng-reflect-position="start"
+      position="start"
+      style=""
+      tabindex="-1"
+    >
+      <div
+        class="mat-drawer-inner-container"
+      />
+    </mat-sidenav>
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <mat-sidenav
+      class="mat-drawer mat-sidenav ng-tns-c5-1 ng-trigger ng-trigger-transform mat-drawer-end mat-drawer-side ng-star-inserted"
+      mode="side"
+      ng-reflect-mode="side"
+      ng-reflect-opened="false"
+      ng-reflect-position="end"
+      position="end"
+      style="box-shadow:none;visibility:hidden;0:box-shadow;1:visibility;"
+      tabindex="-1"
+    >
+      <div
+        class="mat-drawer-inner-container"
+      />
+    </mat-sidenav>
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <mat-sidenav-content
+      class="mat-drawer-content mat-sidenav-content"
+    />
+    
+  </mat-sidenav-container>
+</div>
+`;
