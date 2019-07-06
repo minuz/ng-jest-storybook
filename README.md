@@ -6,6 +6,10 @@ This is a sample project created to demonstrate the usage of Storybook with Angu
 * On drop custom validation
 * Initilization within specific node on the tree
 
+## Build pipeline status
+
+[![Build Status](https://dev.azure.com/fernandofminoru/n4nd0-samples/_apis/build/status/minuz.ng-jest-storybook?branchName=master)](https://dev.azure.com/fernandofminoru/n4nd0-samples/_build/latest?definitionId=1&branchName=master)
+
 ## Pre-requisites
 
 * [NodeJs](https://nodejs.org/en/) - Created with v12.6.0 - Should work on earlier versions, not tested
