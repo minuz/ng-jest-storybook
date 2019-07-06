@@ -62,13 +62,13 @@ steps:
       failIfCoverageEmpty: true
       condition: succeededOrFailed()
 
-  - task: CopyFiles@2
+  - task: ArchiveFiles@2
     inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)/dist'
-      Contents: '**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
-      CleanTargetFolder: true
-      OverWrite: true
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/storybook'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
     inputs:

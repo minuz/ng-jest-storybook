@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "demo": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o dist/storybook",
     "typedoc": "typedoc --json ./projects/n4nd0/tree-control/typedoc.json --exclude **/*.spec.* ./projects/n4nd0/tree-control"
   },
   "private": true,
