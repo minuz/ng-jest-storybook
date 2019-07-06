@@ -20,19 +20,37 @@ steps:
       versionSpec: '1.x'
 
   - script: |
-      npm install -g @angular/cli
+      npm install -g @angular/cli@8.1.0
+    displayName: 'Install Angular cli'
+
+  - script: |
       yarn
+    displayName: 'Restore packages'
+
+  - script: |
       yarn ci:libs
+    displayName: 'Build libraries'
+
+  - script: |
       yarn build --prod
+    displayName: 'Build main app'
+
+  - script: |
       yarn typedoc
+    displayName: 'Generate tree-control typedoc'
+
+  - script: |
       yarn test
+    displayName: 'Run unit tests'
+
+  - script: |
       yarn build-storybook
-    displayName: 'Build project'
+    displayName: 'Build storybook assets'
 
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: 'JUnit'
-      testResultsFiles: 'jest-report.html'
+      testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/test_results.xml'
       searchFolder: '$(System.DefaultWorkingDirectory)/coverage'
 
   - task: PublishCodeCoverageResults@1
