@@ -62,8 +62,16 @@ steps:
       failIfCoverageEmpty: true
       condition: succeededOrFailed()
 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)/dist'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
+      CleanTargetFolder: true
+      OverWrite: true
+
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/artifacts'
       ArtifactName: 'drop'
       publishLocation: 'Container'
