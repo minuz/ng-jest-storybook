@@ -28,3 +28,16 @@ steps:
       yarn test
       yarn build-storybook
     displayName: 'Build project'
+    
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'jest-report.html'
+    searchFolder: '$(System.DefaultWorkingDirectory)/coverage'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'cobertura-coverage.xml'
+    pathToSources: '$(System.DefaultWorkingDirectory)/coverage'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
