@@ -15,8 +15,9 @@ steps:
   inputs:
     versionSpec: 12.x
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
-  displayName: 'Use Yarn 1.x'
+- task: YarnInstaller@3
+  inputs:
+    versionSpec: '1.x'
 
 - script: |
     npm install -g @angular/cli
@@ -25,3 +26,7 @@ steps:
     yarn typedoc
     yarn build-storybook
   displayName: 'Build project'
+
+- task: Yarn@3
+  inputs:
+    arguments: 'test'
