@@ -1,0 +1,100 @@
+<mat-tree
+  [dataSource]="dataSource"
+  [treeControl]="treeControl"
+  [trackBy]="trackBy"
+>
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodePadding
+    [matTreeNodePaddingIndent]="indent"
+    [draggable]="enableDragAndDrop"
+    [class.selected]="node?.id === (this.selectedNodeId | async)"
+    [class.drop-below]="
+      dragNodeCanDrop &&
+      dragNodeExpandOverArea === 'below' &&
+      dragNodeExpandOverNode === node
+    "
+    [class.drop-center]="
+      dragNodeCanDrop &&
+      dragNodeExpandOverArea === 'under' &&
+      dragNodeExpandOverNode === node
+    "
+    (dragstart)="onDragStart($event, node)"
+    (dragover)="onDragOver($event, node)"
+    (drop)="onDrop($event, node)"
+    (dragend)="onDragEnd($event)"
+  >
+    <button class="icon-button" disabled></button>
+    <a [name]="node.id" (click)="onNodeSelected(node)"
+      ><i *ngIf="!!node.icon" class="fa-fw" [ngClass]="node.icon"></i>
+      {{ node.title }}</a
+    >
+  </mat-tree-node>
+  <mat-tree-node
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodePadding
+    [matTreeNodePaddingIndent]="indent"
+    [class.selected-parent]="
+      !treeControl.isExpanded(node) &&
+      this.selectedBranch &&
+      node?.id === this.selectedBranch[node.level]
+    "
+    [class.selected]="node?.id === (this.selectedNodeId | async)"
+    [draggable]="enableDragAndDrop"
+    [class.drop-above]="
+      dragNodeCanDrop &&
+      dragNodeExpandOverArea === 'above' &&
+      dragNodeExpandOverNode === node
+    "
+    [class.drop-below]="
+      dragNodeCanDrop &&
+      dragNodeExpandOverArea === 'below' &&
+      dragNodeExpandOverNode === node
+    "
+    [class.drop-center]="
+      dragNodeCanDrop &&
+      dragNodeExpandOverArea === 'under' &&
+      dragNodeExpandOverNode === node
+    "
+    (dragstart)="onDragStart($event, node)"
+    (dragover)="onDragOver($event, node)"
+    (drop)="onDrop($event, node)"
+    (dragend)="onDragEnd($event)"
+  >
+    <button
+      class="icon-button"
+      [attr.aria-label]="'toggle ' + node.title"
+      matTreeNodeToggle
+    >
+      <i
+        class="icon fa fa-fw"
+        [class.fa-spinner-third]="node.isLoading"
+        [class.fa-angle-right]="
+          !node.isLoading &&
+          !(
+            !treeControl.isExpanded(node) &&
+            this.selectedBranch &&
+            node?.id === this.selectedBranch[node.level]
+          )
+        "
+        [class.fa-angle-double-right]="
+          !treeControl.isExpanded(node) &&
+          this.selectedBranch &&
+          node?.id === this.selectedBranch[node.level]
+        "
+        [class.fa-spin]="node.isLoading"
+        [class.fa-rotate-90]="treeControl.isExpanded(node)"
+      ></i>
+    </button>
+    <a
+      [name]="node.id"
+      r
+      (click)="onNodeSelected(node)"
+      (dblclick)="onNodeDoubleClicked(node)"
+      ><i *ngIf="!!node.icon" class="fa-fw" [ngClass]="node.icon"></i>
+      {{ node.title }}</a
+    >
+  </mat-tree-node>
+</mat-tree>
+
+<span #emptyItem></span>

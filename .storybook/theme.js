@@ -31,7 +31,5 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 
-  brandTitle: 'Lumen Workbench',
-  brandUrl: 'https://example.com',
-  brandImage: '/img/lumen_compliance_light_blue.png',
+  brandTitle: 'n4nd0 Storybook'
 });

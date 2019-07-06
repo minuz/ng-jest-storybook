@@ -1,7 +1,7 @@
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppLayoutComponent, AppLayoutService } from '@lumen/app-layout';
+import { AppLayoutComponent, AppLayoutService } from '@n4nd0/app-layout';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
@@ -16,12 +16,12 @@ stories.addDecorator(
 );
 stories.add('expanded', () => ({
   template: `
-    <lumen-app-layout [toggleLeftSidenav]="toggleLeftSidenav" [toggleRightSidenav]="toggleRightSidenav">
+    <n4nd0-app-layout [toggleLeftSidenav]="toggleLeftSidenav" [toggleRightSidenav]="toggleRightSidenav">
       <div toolbar>Should show toolbar content</div>
       <div left-sidenav>Should display something on left sidenav</div>
       <div main-content>Should display something as main content</div>
       <div right-sidenav>Should display something as right sidenav</div>
-    </lumen-app-layout>`,
+    </n4nd0-app-layout>`,
   props: {
     toggleLeftSidenav: boolean('toggle left sidenav', true),
     toggleRightSidenav: boolean('toggle right sidenav', true)

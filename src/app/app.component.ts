@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppLayoutService } from '@lumen/app-layout';
+import { AppLayoutService } from '@n4nd0/app-layout';
 
 @Component({
   selector: 'app-root',
