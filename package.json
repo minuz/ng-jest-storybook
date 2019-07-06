@@ -5,14 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:lib": "ng build @lumen/app-layout",
-    "watch:lib": "build:lib --watch",
+    "build:tree-control": "ng build @n4nd0/tree-control",
+    "build:layout": "ng build @n4nd0/app-layout",
     "test": "jest --config ./jest.config.js --json --outputFile=./coverage/jest-test-results.json",
     "test:watch": "yarn test --watch",
+    "setup": "run-s build:* typedoc test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "demo": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "typedoc": "typedoc --json ./projects/n4nd0/tree-control/typedoc.json --exclude **/*.spec.* ./projects/n4nd0/tree-control"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +31,7 @@
     "core-js": "^3.1.4",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
+    "lodash": "^4.17.11",
     "rxjs": "^6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "^0.9.1"
@@ -42,7 +45,7 @@
     "@angular/compiler-cli": "^8.1.0",
     "@angular/language-service": "^8.1.0",
     "@babel/core": "^7.5.0",
-    "@fortawesome/fontawesome-pro": "^5.9.0",
+    "@south-paw/storybook-addon-overview-angular": "^0.0.5",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-jest": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",
@@ -67,6 +70,7 @@
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
     "tslint": "^5.18.0",
+    "typedoc": "^0.14.2",
     "typescript": "3.4.2",
     "yarn": "^1.16.0"
   }

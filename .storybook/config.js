@@ -1,4 +1,4 @@
-import { configure } from '@storybook/angular';
+import { configure, addDecorator } from '@storybook/angular';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addParameters } from '@storybook/angular';
 import theme from './theme';
@@ -9,6 +9,8 @@ addParameters({
     addonPanelInRight: true
   }
 });
+
+addDecorator(withKnobs);
 
 function loadStories() {
   require('../src/stories/index.stories.ts');

@@ -1,0 +1,75 @@
+$selected-color: rgb(50, 161, 219);
+$selected-child-color: rgba(50, 161, 219, 0.3);
+$icon-small-container-size: 20px;
+$icon-small-size: 14px;
+$drop-margin: 3px;
+
+.selected {
+  background-color: $selected-color;
+  a {
+    color: white;
+    font-weight: bold;
+    &:hover {
+      color: white;
+    }
+  }
+}
+.selected-parent {
+  .icon-button {
+    color: $selected-color;
+  }
+}
+a {
+  color: black;
+  font-family: 'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  user-select: none;
+  &:hover {
+    color: black;
+    font-weight: bold;
+  }
+  transition: color 200ms ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-button {
+  width: $icon-small-container-size;
+  height: $icon-small-container-size;
+  line-height: $icon-small-container-size;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  margin-right: 10px;
+  .mat-icon i {
+    font-size: $icon-small-size;
+    line-height: $icon-small-size;
+    width: $icon-small-size;
+    height: $icon-small-size;
+  }
+}
+mat-tree-node {
+  height: 24px;
+  min-height: 24px;
+  border-top: $drop-margin solid transparent;
+  border-bottom: $drop-margin solid transparent;
+  transition: background-color 200ms ease-in-out, border-top 200ms ease-in-out,
+    border-bottom 200ms ease-in-out;
+}
+.drop-above {
+  border-top: $drop-margin solid orange;
+  a {
+    color: orange;
+  }
+}
+.drop-below {
+  border-bottom: $drop-margin solid orange;
+  a {
+    color: orange;
+  }
+}
+.drop-center {
+  background-color: orange;
+  a {
+    color: white;
+  }
+}

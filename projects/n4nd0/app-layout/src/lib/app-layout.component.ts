@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { AppLayoutService } from './app-layout.service';
 
 @Component({
-  selector: 'lumen-app-layout',
+  selector: 'n4nd0-app-layout',
   templateUrl: './app-layout.component.html',
   styleUrls: ['./app-layout.component.scss']
 })
