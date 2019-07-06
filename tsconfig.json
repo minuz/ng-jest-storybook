@@ -17,7 +17,13 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "hello": ["dist/hello"],
-      "hello/*": ["dist/hello/*"]
+      "hello/*": ["dist/hello/*"],
+      "@n4nd0/app-layout": ["dist/n4nd0/app-layout"],
+      "@n4nd0/app-layout/*": ["dist/n4nd0/app-layout/*"],
+      "@n4nd0/tree-control": ["dist/n4nd0/tree-control"],
+      "@n4nd0/tree-control/*": ["dist/n4nd0/tree-control/*"],
+      "@n4nd0/welcome": ["dist/n4nd0/welcome"],
+      "@n4nd0/welcome/*": ["dist/n4nd0/welcome/*"]
     }
   }
 }

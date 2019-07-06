@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppLayoutService } from '@n4nd0/app-layout';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-jest-storybook';
+  constructor(public layout: AppLayoutService) {}
 }

@@ -119,7 +119,7 @@
       "root": "projects/hello",
       "sourceRoot": "projects/hello/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "n4nd0",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -142,6 +142,103 @@
             "tsConfig": [
               "projects/hello/tsconfig.lib.json",
               "projects/hello/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "@n4nd0/app-layout": {
+      "projectType": "library",
+      "root": "projects/n4nd0/app-layout",
+      "sourceRoot": "projects/n4nd0/app-layout/src",
+      "prefix": "n4nd0",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/n4nd0/app-layout/tsconfig.lib.json",
+            "project": "projects/n4nd0/app-layout/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/n4nd0/app-layout/src/test.ts",
+            "tsConfig": "projects/n4nd0/app-layout/tsconfig.spec.json",
+            "karmaConfig": "projects/n4nd0/app-layout/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/n4nd0/app-layout/tsconfig.lib.json",
+              "projects/n4nd0/app-layout/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "@n4nd0/tree-control": {
+      "projectType": "library",
+      "root": "projects/n4nd0/tree-control",
+      "sourceRoot": "projects/n4nd0/tree-control/src",
+      "prefix": "n4nd0",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/n4nd0/tree-control/tsconfig.lib.json",
+            "project": "projects/n4nd0/tree-control/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/n4nd0/tree-control/tsconfig.spec.json",
+            "karmaConfig": "projects/n4nd0/tree-control/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/n4nd0/tree-control/tsconfig.lib.json",
+              "projects/n4nd0/tree-control/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "@n4nd0/welcome": {
+      "projectType": "library",
+      "root": "projects/n4nd0/welcome",
+      "sourceRoot": "projects/n4nd0/welcome/src",
+      "prefix": "n4nd0",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/n4nd0/welcome/tsconfig.lib.json",
+            "project": "projects/n4nd0/welcome/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/n4nd0/welcome/tsconfig.spec.json",
+            "karmaConfig": "projects/n4nd0/welcome/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/n4nd0/welcome/tsconfig.lib.json",
+              "projects/n4nd0/welcome/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
