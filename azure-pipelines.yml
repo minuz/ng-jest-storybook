@@ -1,3 +1,4 @@
+@@ -1,69 +1,77 @@
 # Node.js with Angular
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
@@ -62,16 +63,17 @@ steps:
       failIfCoverageEmpty: true
       condition: succeededOrFailed()
 
-  - task: ArchiveFiles@2
+  - task: CopyFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/storybook'
-      includeRootFolder: true
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      replaceExistingArchive: true
+      SourceFolder: '$(System.DefaultWorkingDirectory)/dist/storybook'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
+      CleanTargetFolder: true
+      OverWrite: true
 
   - task: PublishBuildArtifacts@1
     inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/artifacts'
       ArtifactName: 'drop'
       publishLocation: 'Container'
