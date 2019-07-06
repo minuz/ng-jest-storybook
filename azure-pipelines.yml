@@ -67,7 +67,7 @@ steps:
       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/storybook'
       includeRootFolder: true
       archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/artifacts/$(Build.BuildId).zip'
       replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
