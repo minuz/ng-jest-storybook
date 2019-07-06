@@ -8,6 +8,8 @@
     "build:welcome": "ng build @n4nd0/welcome",
     "build:tree-control": "ng build @n4nd0/tree-control",
     "build:layout": "ng build @n4nd0/app-layout",
+    "ci:libs": "run-s build:*",
+    "ci:prod": "run-s ci:libs build --prod",
     "test": "jest --config ./jest.config.js --json --outputFile=./coverage/jest-test-results.json",
     "test:watch": "yarn test --watch",
     "setup": "run-s build:* typedoc test",
