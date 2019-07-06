@@ -1132,11 +1132,6 @@
   resolved "https://lucsan.pkgs.visualstudio.com/_packaging/node-feed/npm/registry/@emotion/weak-memoize/-/weak-memoize-0.2.3.tgz#dfa0c92efe44a1d1a7974fb49ffeb40ef2da5a27"
   integrity sha1-36DJLv5EodGnl0+0n/60DvLaWic=
 
-"@fortawesome/fontawesome-pro@^5.9.0":
-  version "5.9.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/fontawesome-pro-5.9.0.tgz#ee27f6c3958e1e6f07ae6d157d017b98a9fc0608"
-  integrity sha512-vb7MJ0S+4FWZajv+iWKikG3QzX0oIAI+tYtlMBVwAyUmddESL/w5/2LCzbc81Vs4esGz0gr+bIem6BeMkIg+Mw==
-
 "@icons/material@^0.2.4":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"

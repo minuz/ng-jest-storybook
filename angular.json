@@ -115,39 +115,6 @@
         }
       }
     },
-    "hello": {
-      "root": "projects/hello",
-      "sourceRoot": "projects/hello/src",
-      "projectType": "library",
-      "prefix": "n4nd0",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/hello/tsconfig.lib.json",
-            "project": "projects/hello/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/hello/src/test.ts",
-            "tsConfig": "projects/hello/tsconfig.spec.json",
-            "karmaConfig": "projects/hello/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/hello/tsconfig.lib.json",
-              "projects/hello/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "@n4nd0/app-layout": {
       "projectType": "library",
       "root": "projects/n4nd0/app-layout",

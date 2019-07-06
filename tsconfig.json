@@ -16,8 +16,6 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "hello": ["dist/hello"],
-      "hello/*": ["dist/hello/*"],
       "@n4nd0/app-layout": ["dist/n4nd0/app-layout"],
       "@n4nd0/app-layout/*": ["dist/n4nd0/app-layout/*"],
       "@n4nd0/tree-control": ["dist/n4nd0/tree-control"],
