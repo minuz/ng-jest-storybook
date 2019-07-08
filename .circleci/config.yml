@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Build Libraries
+          command: yarn ci:libs
+      - run:
+          name: Build main app
+          command: yarn build --prod
+      - run:
+          name: Generate tree-control typedoc
+          command: yarn typedoc
+      - run:
+          name: Run tests
+          command: yarn test
+      - run:
+          name: Build storybook assets
+          command: yarn build-storybook
+      - run:
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - store_artifacts:
+          path: ./coverage/test-results.xml
+          prefix: tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - store_test_results:
+          path: ./coverage/test-results.xml
