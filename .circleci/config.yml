@@ -33,14 +33,11 @@ jobs:
       - run:
           name: Build storybook assets
           command: yarn build-storybook
-      - run:
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
-      - store_artifacts:
-          path: ./coverage/test-results.xml
-          prefix: tests
       - store_artifacts:
           path: coverage
           prefix: coverage
+      - store_artifacts:
+          path: dist/storybook
+          prefix: storybook
       - store_test_results:
-          path: ./coverage/test-results.xml
+          path: ./coverage/test_results.xml
