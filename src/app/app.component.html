@@ -5,9 +5,22 @@
       fontIcon="fa-bars"
       (click)="layout.toggleLeftSidenav()"
     ></mat-icon>
-    Something on the header
+    n4nd0 Playground
   </div>
-  <div left-sidenav>Something on the left sidenav</div>
+  <div left-sidenav>
+    <ng-container *ngIf="updates.available | async as event">
+      <span>Current Version: {{ event.current.appData }}</span>
+      <span *ngIf="event.available.hash !== event.current.hash"
+        >There's a new version available</span
+      >
+    </ng-container>
+    <div>
+      <ul>
+        <li>Something</li>
+        <li>Another one</li>
+      </ul>
+    </div>
+  </div>
   <ng-container main-content>
     <!--The content below is only a placeholder and can be replaced.-->
     <div style="text-align:center">
@@ -41,7 +54,6 @@
           >
         </h2>
       </li>
-      <li></li>
     </ul>
 
     <router-outlet></router-outlet>
