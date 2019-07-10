@@ -5,54 +5,34 @@
 
 trigger:
   - master
-
+  - develop
 pool:
   vmImage: 'ubuntu-latest'
-
 steps:
   - task: NodeTool@0
     displayName: 'Use Node 12.x'
     inputs:
       versionSpec: 12.x
-
   - task: YarnInstaller@3
     inputs:
       versionSpec: '1.x'
-
-  - script: |
-      npm install -g @angular/cli@8.1.0
-    displayName: 'Install Angular cli'
-
   - script: |
       yarn
-    displayName: 'Restore packages'
-
-  - script: |
       yarn ci:libs
-    displayName: 'Build libraries'
-
-  - script: |
-      yarn build --prod
-    displayName: 'Build main app'
-
-  - script: |
       yarn typedoc
-    displayName: 'Generate tree-control typedoc'
-
+      yarn build --prod
+    displayName: 'Run app build scripts'
   - script: |
       yarn test
     displayName: 'Run unit tests'
-
   - script: |
       yarn build-storybook
-    displayName: 'Build storybook assets'
-
+    displayName: 'Build storybook project'
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/test_results.xml'
       searchFolder: '$(System.DefaultWorkingDirectory)/coverage'
-
   - task: PublishCodeCoverageResults@1
     inputs:
       codeCoverageTool: 'Cobertura'
@@ -61,7 +41,6 @@ steps:
       reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
       failIfCoverageEmpty: true
       condition: succeededOrFailed()
-
   - task: CopyFiles@2
     inputs:
       SourceFolder: '$(System.DefaultWorkingDirectory)/dist'
@@ -69,7 +48,6 @@ steps:
       TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
       CleanTargetFolder: true
       OverWrite: true
-
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/artifacts'
