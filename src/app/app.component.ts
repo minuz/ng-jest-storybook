@@ -8,7 +8,7 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'ng-jest-storybook';
+  title = 'n4nd0-ng-playground';
   constructor(public layout: AppLayoutService, public updates: SwUpdate) {}
 
   ngOnInit() {}

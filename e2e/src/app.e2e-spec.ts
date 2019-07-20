@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to ng-jest-storybook!');
+    expect(page.getTitleText()).toEqual('Welcome to n4nd0-ng-playground!');
   });
 });

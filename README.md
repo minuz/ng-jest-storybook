@@ -8,7 +8,7 @@ This is a sample project created to demonstrate the usage of Storybook with Angu
 
 ## Build pipeline status
 
-[![Build Status](https://dev.azure.com/fernandofminoru/n4nd0-samples/_apis/build/status/minuz.ng-jest-storybook?branchName=master)](https://dev.azure.com/fernandofminoru/n4nd0-samples/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/fernandofminoru/n4nd0-samples/_apis/build/status/minuz.n4nd0-ng-playground?branchName=master)](https://dev.azure.com/fernandofminoru/n4nd0-samples/_build/latest?definitionId=1&branchName=master)
 
 ## Pre-requisites
 
