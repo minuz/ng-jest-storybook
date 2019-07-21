@@ -10,6 +10,8 @@ This is a sample project created to demonstrate the usage of Storybook with Angu
 
 [![Build Status](https://dev.azure.com/fernandofminoru/n4nd0-samples/_apis/build/status/minuz.n4nd0-ng-playground?branchName=master)](https://dev.azure.com/fernandofminoru/n4nd0-samples/_build/latest?definitionId=1&branchName=master)
 
+[![CircleCI](https://circleci.com/gh/minuz/n4nd0-ng-playground/tree/master.svg?style=svg)](https://circleci.com/gh/minuz/n4nd0-ng-playground/tree/master)
+
 ## Pre-requisites
 
 * [NodeJs](https://nodejs.org/en/) - Created with v12.6.0 - Should work on earlier versions, not tested
