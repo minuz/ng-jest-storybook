@@ -3,7 +3,7 @@
 exports[`AppLayoutComponent layout functionality Should be able to close left sidenav 1`] = `
 <div
   id="root1"
-  ng-version="8.1.0"
+  ng-version="8.1.2"
 >
   <mat-toolbar
     class="mat-toolbar mat-toolbar-single-row"
