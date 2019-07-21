@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "out-tsc/spec",
+    "allowJs": true
+  },
+  "files": ["projects/playground/src/polyfills.ts"],
+  "include": ["projects/**/*.spec.ts", "projects/**/*.d.ts"]
+}

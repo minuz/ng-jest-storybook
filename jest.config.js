@@ -1,5 +1,13 @@
 module.exports = {
-  preset: 'jest-preset-angular',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.html$',
+      astTransformers: [
+        require.resolve('jest-preset-angular/InlineHtmlStripStylesTransformer')
+      ]
+    }
+  },
   setupFilesAfterEnv: ['<rootDir>/setup.jest.ts'],
   testPathIgnorePatterns: [
     '/node_modules/',
