@@ -11,17 +11,17 @@ describe('AppLayoutComponent', () => {
   let fixture: ComponentFixture<AppLayoutComponent>;
   let service: AppLayoutService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [AppLayoutComponent],
       imports: [BrowserAnimationsModule, MatSidenavModule, MatToolbarModule]
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(AppLayoutComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
   });
 
   test('should create', () => {

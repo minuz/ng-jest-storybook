@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   MatButtonModule,
   MatIconModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 
 import { TreeMockData } from './helpers/mock.data';
@@ -14,14 +14,17 @@ import { TreeviewComponent } from './treeview.component';
 describe('TreeviewComponent', () => {
   let component: TreeviewComponent;
   let fixture: ComponentFixture<TreeviewComponent>;
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [CommonModule, MatButtonModule, MatTreeModule, MatIconModule],
-      declarations: [TreeviewComponent],
-    });
-    fixture = TestBed.createComponent(TreeviewComponent);
-    component = fixture.componentInstance;
+      declarations: [TreeviewComponent]
+    })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(TreeviewComponent);
+        component = fixture.componentInstance;
+      });
   });
 
   test('can load instance', () => {
@@ -85,7 +88,7 @@ describe('TreeviewComponent', () => {
     component.branchDetails = {
       nodeId: '6',
       parentId: '4',
-      nodeType: 'leaf',
+      nodeType: 'leaf'
     };
     fixture.detectChanges();
     fixture.whenRenderingDone().then(() => {

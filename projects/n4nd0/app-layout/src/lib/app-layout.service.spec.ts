@@ -5,9 +5,10 @@ import { AppLayoutService } from './app-layout.service';
 describe('AppLayoutService', () => {
   let service: AppLayoutService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [AppLayoutService] });
-    service = TestBed.get(AppLayoutService);
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({ providers: [AppLayoutService] })
+      .compileComponents()
+      .then(() => (service = TestBed.get(AppLayoutService)));
   });
 
   test('should be created', () => {
