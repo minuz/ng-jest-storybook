@@ -1,3 +1,6 @@
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.spec');
+
 module.exports = {
   globals: {
     'ts-jest': {
@@ -8,6 +11,16 @@ module.exports = {
       ]
     }
   },
+  transform: {
+    '^.+\\.(ts|js|html)$': 'ts-jest'
+  },
+  testEnvironment: 'jest-environment-jsdom-thirteen',
+  moduleFileExtensions: ['ts', 'html', 'js', 'json'],
+  transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
+  snapshotSerializers: [
+    'jest-preset-angular/AngularSnapshotSerializer.js',
+    'jest-preset-angular/HTMLCommentSerializer.js'
+  ],
   setupFilesAfterEnv: ['<rootDir>/setup.jest.ts'],
   testPathIgnorePatterns: [
     '/node_modules/',
