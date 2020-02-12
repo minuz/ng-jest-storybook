@@ -189,7 +189,7 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   @Output() dragDrop = new EventEmitter();
 
-  @ViewChild('emptyItem', { static: false }) emptyItem: ElementRef;
+  @ViewChild('emptyItem') emptyItem: ElementRef;
 
   // Common fields
   dataSource: TreeviewDataSource;

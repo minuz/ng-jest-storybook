@@ -1,14 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatTreeModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTreeModule } from '@angular/material/tree';
 import { TreeMockData, TreeviewComponent } from '@n4nd0/tree-control';
-import {
-  OverviewModule,
-  withOverview
-} from '@south-paw/storybook-addon-overview-angular';
+import { OverviewModule, withOverview } from '@south-paw/storybook-addon-overview-angular';
 import { withTests } from '@storybook/addon-jest';
 import { boolean, number, object, withKnobs } from '@storybook/addon-knobs';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
