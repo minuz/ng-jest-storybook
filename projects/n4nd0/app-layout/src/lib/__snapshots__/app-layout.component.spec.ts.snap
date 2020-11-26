@@ -3,7 +3,6 @@
 exports[`AppLayoutComponent layout functionality Should be able to close left sidenav 1`] = `
 <div
   id="root1"
-  ng-version="8.1.0"
 >
   <mat-toolbar
     class="mat-toolbar mat-toolbar-single-row"
@@ -17,11 +16,8 @@ exports[`AppLayoutComponent layout functionality Should be able to close left si
       class="cdk-visually-hidden cdk-focus-trap-anchor"
     />
     <mat-sidenav
-      class="mat-drawer mat-sidenav ng-tns-c5-0 ng-trigger ng-trigger-transform mat-drawer-side ng-star-inserted ng-animating"
+      class="mat-drawer mat-sidenav ng-trigger ng-trigger-transform mat-drawer-side ng-animating"
       mode="side"
-      ng-reflect-mode="side"
-      ng-reflect-opened="false"
-      ng-reflect-position="start"
       position="start"
       style=""
       tabindex="-1"
@@ -39,11 +35,8 @@ exports[`AppLayoutComponent layout functionality Should be able to close left si
       class="cdk-visually-hidden cdk-focus-trap-anchor"
     />
     <mat-sidenav
-      class="mat-drawer mat-sidenav ng-tns-c5-1 ng-trigger ng-trigger-transform mat-drawer-end mat-drawer-side ng-star-inserted"
+      class="mat-drawer mat-sidenav ng-trigger ng-trigger-transform mat-drawer-end mat-drawer-side"
       mode="side"
-      ng-reflect-mode="side"
-      ng-reflect-opened="false"
-      ng-reflect-position="end"
       position="end"
       style="box-shadow:none;visibility:hidden;0:box-shadow;1:visibility;"
       tabindex="-1"

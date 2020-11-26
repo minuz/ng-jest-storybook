@@ -125,7 +125,7 @@ export class TreeStoryHelper {
   };
 
   // Get branch for TreeMockData.dataWithParentId
-  static getBranch = (nodeId: string, parentId: string, nodeType: string) => {
+  static getBranch = (nodeId: string) => {
     const flatTree = [];
     const flattenTreeDeep = (nodeList: any[]) => {
       nodeList.forEach(node => {

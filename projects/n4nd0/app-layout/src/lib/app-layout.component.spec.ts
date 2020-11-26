@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppLayoutComponent } from './app-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ describe('AppLayoutComponent', () => {
   let fixture: ComponentFixture<AppLayoutComponent>;
   let service: AppLayoutService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AppLayoutComponent],
       imports: [BrowserAnimationsModule, MatSidenavModule, MatToolbarModule]

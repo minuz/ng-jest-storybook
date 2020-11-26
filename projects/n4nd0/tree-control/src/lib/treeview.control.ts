@@ -17,10 +17,6 @@ import { TreeviewDataSource } from './treeview.datasource';
 /**
  * Class extending the Material `FlatTreeControl`.
  * It has the purpose of adding extra functionality that belongs to the tree.
- *
- * @export
- * @class TreeControl
- * @extends {FlatTreeControl<ITreeNode>}
  */
 export class TreeControl extends FlatTreeControl<ITreeNode> {
   treeHelper: TreeControlHelper;
@@ -40,9 +36,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
 
   /**
    * Exposes the getRoot method and automatically parse the result to ITreeNode[].
-   *
-   * @returns Observable<ITreeNode[]>
-   * @memberof TreeControl
    */
   loadRoot(): Observable<ITreeNode[]> {
     let loadRoot = this.getRoot();
@@ -58,10 +51,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
 
   /**
    * Exposes the getChildren method and automatically parse the result to ITreeNode[]
-   *
-   * @param {ITreeNode} pNode
-   * @returns {Observable<ITreeNode[]>}
-   * @memberof TreeControl
    */
   loadChildren(pNode: ITreeNode): Observable<ITreeNode[]> {
     let loadChildren = this.getChildren(pNode);
@@ -82,12 +71,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
    * NOTE: The branch loader assumes the parent/child relationship is established based on parentId.
    * It uses the parentId to set the correct levels. In case the provided data does not contain a parentId,
    * the branch will be created on the order it has been passed.
-   *
-   * @param {string} id
-   * @param {string} parentId
-   * @param {string} nodeType
-   * @returns {Observable<ITreeNode[]>}
-   * @memberof TreeControl
    */
   loadBranch(
     id: string,
@@ -115,10 +98,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
   /**
    * Find the parent node from a node id by iterating through the data collection.
    * The parent/child relationship is defined by the node level.
-   *
-   * @param {string} id
-   * @returns {(ITreeNode | null)}
-   * @memberof TreeControl
    */
   findParent(id: string): ITreeNode | null {
     const node = this.findNodeById(id);
@@ -137,10 +116,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
 
   /**
    * Find the node based on its id.
-   *
-   * @param {string} id
-   * @returns {(ITreeNode | null)}
-   * @memberof TreeControl
    */
   findNodeById(id: string): ITreeNode | null {
     return id && this.dataNodes
@@ -150,10 +125,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
 
   /**
    * Find the node index based on its id.
-   *
-   * @param {string} id
-   * @returns {number}
-   * @memberof TreeControl
    */
   findNodeIndex(id: string): number {
     return id && this.dataNodes
@@ -165,9 +136,6 @@ export class TreeControl extends FlatTreeControl<ITreeNode> {
    * Converts the current `ITreeNode` dataset into a hierarchical data based on the level and `ITreeNode.data`
    * Since the `findChildren` mutates the data, we clone the original `dataNodes` so there's no impact on the
    * current rendered tree nodes.
-   *
-   * @returns
-   * @memberof TreeControl
    */
   toNestedTree<T>(): T[] {
     const clonedData = cloneDeep(this.dataNodes);

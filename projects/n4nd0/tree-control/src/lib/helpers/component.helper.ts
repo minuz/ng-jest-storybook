@@ -7,9 +7,6 @@ import { consoleDebug } from './pipe.operators';
  * Its purpose is to remove a bit of the clutter from the component class.
  * All private methods have been abstracted to this class.
  * Getters and setters have been added to ensure values are properly synced with main class.
- *
- * @export
- * @class TreeComponentHelper
  */
 export class TreeComponentHelper {
   get selectedNodeId() {

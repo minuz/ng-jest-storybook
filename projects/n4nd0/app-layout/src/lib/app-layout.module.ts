@@ -8,6 +8,6 @@ import { AppLayoutComponent } from './app-layout.component';
 @NgModule({
   declarations: [AppLayoutComponent],
   imports: [BrowserAnimationsModule, MatSidenavModule, MatToolbarModule],
-  exports: [AppLayoutComponent]
+  exports: [AppLayoutComponent],
 })
 export class AppLayoutModule {}
