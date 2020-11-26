@@ -16,7 +16,7 @@ exports[`AppLayoutComponent layout functionality Should be able to close left si
       class="cdk-visually-hidden cdk-focus-trap-anchor"
     />
     <mat-sidenav
-      class="mat-drawer mat-sidenav ng-tns-c5-0 ng-trigger ng-trigger-transform mat-drawer-side ng-star-inserted ng-animating"
+      class="mat-drawer mat-sidenav ng-trigger ng-trigger-transform mat-drawer-side ng-animating"
       mode="side"
       position="start"
       style=""
@@ -35,7 +35,7 @@ exports[`AppLayoutComponent layout functionality Should be able to close left si
       class="cdk-visually-hidden cdk-focus-trap-anchor"
     />
     <mat-sidenav
-      class="mat-drawer mat-sidenav ng-tns-c5-1 ng-trigger ng-trigger-transform mat-drawer-end mat-drawer-side ng-star-inserted"
+      class="mat-drawer mat-sidenav ng-trigger ng-trigger-transform mat-drawer-end mat-drawer-side"
       mode="side"
       position="end"
       style="box-shadow:none;visibility:hidden;0:box-shadow;1:visibility;"

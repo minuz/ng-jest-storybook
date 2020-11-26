@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild,
   ViewEncapsulation,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { debounceTime, filter, mergeMap, takeUntil, tap } from 'rxjs/operators';
@@ -24,7 +24,7 @@ import {
   GetRootFunction,
   IBranchDetails,
   ITreeNode,
-  TransformFunction
+  TransformFunction,
 } from './models/treeview.models.interfaces';
 import { TreeControl } from './treeview.control';
 import { TreeviewDataSource } from './treeview.datasource';
@@ -44,97 +44,64 @@ import { TreeviewDataSource } from './treeview.datasource';
   selector: 'wb-treeview',
   templateUrl: 'treeview.component.html',
   styleUrls: ['treeview.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Flag to determine whether the component should display debugging information on console.
-   * @default false
-   * @type {boolean}
-   * @memberof TreeviewComponent
    */
-  @Input() enableDebug: boolean = false;
+  @Input() enableDebug = false;
 
   /**
    * Flag to determine whether the component should use drag and drop
-   * @default false
-   * @type {boolean}
-   * @memberof TreeviewComponent
    */
-  @Input() enableDragAndDrop: boolean = false;
+  @Input() enableDragAndDrop = false;
 
   /**
    * Value in pixels to determine the indentation of children nodes in relation to its parent.
-   *
-   * @default 20
-   * @type {number}
-   * @memberof TreeviewComponent
    */
-  @Input() indent: number = 20;
+  @Input() indent = 20;
 
   /**
    * Expression to customize the logic whether the node can be dropped or not.
    * Requires the property `enableDragAndDrop` to be true.
-   *
-   * @type {CanDrop}
-   * @memberof TreeviewComponent
    */
   @Input() canDrop: CanDrop;
 
   /**
    * Function to determine how the data should be converted to `ITreeNode`
-   *
-   * @type {TransformFunction}
-   * @memberof TreeviewComponent
    */
   @Input() nodeParser: TransformFunction;
 
   /**
    * Function to determine how the tree should get the root data.
-   *
-   * @type {GetRootFunction}
-   * @memberof TreeviewComponent
    */
   @Input() getRoot: GetRootFunction;
 
   /**
    * Function to determine how the tree should get the children nodes of a node.
-   *
-   * @type {GetChildrenFunction}
-   * @memberof TreeviewComponent
    */
   @Input() getChildren: GetChildrenFunction;
 
   /**
    * Function to determine how the tree should load an entire branch.
    * This function is called at the initialization after the `getRoot` is called.
-   *
-   * @type {GetBranchFunction}
-   * @memberof TreeviewComponent
    */
   @Input() getBranch: GetBranchFunction;
 
   /**
    * Flag to determine whether the logic to get children should use the in memory cache.
-   *
-   * @type {boolean}
-   * @memberof TreeviewComponent
    */
   @Input() preventCache: boolean;
 
   /**
    * Flag to determine whether the tree should initiliaze with all its root node expanded.
-   *
-   * @type {boolean}
-   * @memberof TreeviewComponent
    */
   @Input() expandAll: boolean;
 
   /**
    * The branch details should be used to set trigger the branch loading from the component template.
    * Similarly, it can be triggered using the `ViewChild` of the `TreeviewComponent`
-   *
-   * @memberof TreeviewComponent
    */
   @Input()
   set branchDetails(value: IBranchDetails) {
@@ -144,16 +111,12 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Emitter triggered when a node is selected from the UI or when the expandBranch is triggered as it selects the active node.
    * It emits the node id (uuid).
-   *
-   * @memberof TreeviewComponent
    */
   @Output() selectedNodeIdChanged = new EventEmitter<string>();
 
   /**
    * Emitter triggered when a node is selected from the UI or when the expandBranch is triggered as it selects the active node.
    * It emits the node `ITreeNode`.
-   *
-   * @memberof TreeviewComponent
    */
   @Output() selectedNodeChanged = new EventEmitter<ITreeNode>();
 
@@ -161,8 +124,6 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
    * Emitter triggered when the node dragging starts.
    * CAUTION: This event is triggered whilst the user has the node on drag mode.
    * Check Story `Simple drag and drop` and observe how many times the event is triggered.
-   *
-   * @memberof TreeviewComponent
    */
   @Output() dragStart = new EventEmitter();
 
@@ -170,22 +131,16 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
    * Emitter triggered when the node is over another node.
    * CAUTION: This event is triggered whilst the user has the node on drag mode.
    * Check Story `Simple drag and drop` and observe how many times the event is triggered.
-   *
-   * @memberof TreeviewComponent
    */
   @Output() dragOver = new EventEmitter();
 
   /**
    * Emitter triggered when the drag ends.
-   *
-   * @memberof TreeviewComponent
    */
   @Output() dragEnd = new EventEmitter();
 
   /**
    * Emitter triggered when the node is dropped into desired position.
-   *
-   * @memberof TreeviewComponent
    */
   @Output() dragDrop = new EventEmitter();
 
@@ -215,50 +170,50 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.dataSource ? this.dataSource.treeControl : null;
   }
 
-  getLevel = (node: ITreeNode) => node.level;
-  isExpandable = (node: ITreeNode) => node.expandable;
-  hasChild = (index: number, node: ITreeNode) => node.expandable;
-  trackBy = (index: number, node: ITreeNode) => node.trackingId;
+  getLevel = (node: ITreeNode): number => node.level;
+  isExpandable = (node: ITreeNode): boolean => node.expandable;
+  hasChild = (index: number, node: ITreeNode): boolean => node.expandable;
+  trackBy = (index: number, node: ITreeNode): string => node.trackingId;
 
   constructor() {
     this.helper = new TreeComponentHelper(this);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initTree();
     this.initSubscribers();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.initComplete
       .pipe(
-        filter(started => started),
+        filter((started) => started),
         tap(() => this.helper.expandAllHandler()),
         mergeMap(() => this.expandBranch),
-        filter(branch => branch !== null && branch !== undefined),
+        filter((branch) => branch !== null && branch !== undefined),
         debug('Expand branch requested', this.enableDebug),
-        mergeMap(branch => this.dataSource.expandBranch(branch)),
-        tap(details => this.helper.emitBranchDetails(details)),
+        mergeMap((branch) => this.dataSource.expandBranch(branch)),
+        tap((details) => this.helper.emitBranchDetails(details)),
         takeUntil(this.unsubscribe)
       )
-      .subscribe(_ => this.helper.buildSelectedBranch());
+      .subscribe(() => this.helper.buildSelectedBranch());
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
 
-  onNodeSelected(node: ITreeNode) {
+  onNodeSelected(node: ITreeNode): void {
     this.selectedNodeId.next(node.id);
     this.selectedNodeChanged.emit(node);
   }
 
-  onNodeDoubleClicked(node: ITreeNode) {
+  onNodeDoubleClicked(node: ITreeNode): void {
     this.treeControl.toggle(node);
   }
 
-  onDragStart(event: DragEvent, node: ITreeNode) {
+  onDragStart(event: DragEvent, node: ITreeNode): void {
     if (!this.enableDragAndDrop) {
       event.preventDefault();
       return;
@@ -271,7 +226,7 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dragStart.emit({ event, node });
   }
 
-  onDragOver(event: DragEvent, node: ITreeNode) {
+  onDragOver(event: DragEvent, node: ITreeNode): void {
     event.preventDefault();
 
     // Handle node expand
@@ -296,13 +251,13 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.canDrop({
         node: this.dragNode,
         target: node,
-        position: this.dragNodeExpandOverArea
+        position: this.dragNodeExpandOverArea,
       });
 
     this.dragStart.emit({ event, node, canDrop: this.dragNodeCanDrop });
   }
 
-  onDrop(event: DragEvent, node: ITreeNode) {
+  onDrop(event: DragEvent, node: ITreeNode): void {
     event.preventDefault();
 
     const canDrop =
@@ -310,16 +265,16 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.canDrop({
         node: this.dragNode,
         target: node,
-        position: this.dragNodeExpandOverArea
+        position: this.dragNodeExpandOverArea,
       });
 
     if (node !== this.dragNode && canDrop) {
       if (this.dragNodeExpandOverArea === DropPosition.Above) {
-        this.dataSource!.moveAboveTarget(this.dragNode, node);
+        this.dataSource.moveAboveTarget(this.dragNode, node);
       } else if (this.dragNodeExpandOverArea === DropPosition.Below) {
-        this.dataSource!.moveBelowTarget(this.dragNode, node);
+        this.dataSource.moveBelowTarget(this.dragNode, node);
       } else {
-        this.dataSource!.moveUnderTarget(this.dragNode, node);
+        this.dataSource.moveUnderTarget(this.dragNode, node);
       }
     }
     this.dragNode = null;
@@ -331,11 +286,11 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
       node: this.dragNode,
       targetNode: node,
       expandArea: this.dragNodeExpandOverArea,
-      canDrop
+      canDrop,
     });
   }
 
-  onDragEnd(event) {
+  onDragEnd(event): void {
     this.dragNode = null;
     this.dragNodeExpandOverNode = null;
     this.dragNodeExpandOverTime = 0;
@@ -360,7 +315,7 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(
         debounceTime(200),
         debug('Selected id changed', this.enableDebug),
-        tap(id => this.selectedNodeIdChanged.emit(id)),
+        tap((id) => this.selectedNodeIdChanged.emit(id)),
         takeUntil(this.unsubscribe)
       )
       .subscribe(() => this.helper.buildSelectedBranch());
@@ -370,27 +325,27 @@ export class TreeviewComponent implements OnInit, AfterViewInit, OnDestroy {
         debug('Delete node called', this.enableDebug),
         takeUntil(this.unsubscribe)
       )
-      .subscribe(node => this.helper.deleteNodeHandler(node));
+      .subscribe((node) => this.helper.deleteNodeHandler(node));
 
     this.addNode
       .pipe(
         debug('Add node called', this.enableDebug),
         takeUntil(this.unsubscribe)
       )
-      .subscribe(data => this.helper.addNodeHandler(data));
+      .subscribe((data) => this.helper.addNodeHandler(data));
 
     this.updateNode
       .pipe(
         debug('Update node called', this.enableDebug),
         takeUntil(this.unsubscribe)
       )
-      .subscribe(data => this.dataSource.updateNode(data));
+      .subscribe((data) => this.dataSource.updateNode(data));
 
     this.refresh
       .pipe(
         mergeMap(() => this.treeControl.loadRoot()),
         debug('Refresh Root', this.enableDebug),
-        tap(data => this.dataSource.updateTreeData(data)),
+        tap((data) => this.dataSource.updateTreeData(data)),
         takeUntil(this.unsubscribe)
       )
       .subscribe(() => this.helper.buildSelectedBranch());

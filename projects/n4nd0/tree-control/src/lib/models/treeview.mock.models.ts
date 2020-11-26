@@ -48,7 +48,10 @@ export class TestDataPId implements ITestDataPId {
   name: string;
   parentId: string = null;
   children: ITestDataPId[];
-  isLeaf = !(this.children && this.children.length);
+
+  get isLeaf(): boolean {
+    return !(this.children && this.children.length);
+  }
 
   constructor(child?: ITestDataPId) {
     this.number = TestDataPId.idSeed++;

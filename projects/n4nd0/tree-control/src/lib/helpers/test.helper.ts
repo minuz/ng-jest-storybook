@@ -22,7 +22,7 @@ export class TestHelper {
   static getLevel = (node: ITreeNode) => node.level;
 
   static isExpandable = (node: ITreeNode) =>
-    node.data.children && node.data.children.length;
+    node.data.children && node.data.children.length
 
   static nodeParser = (node: ITestData, level: number) => {
     return new TreeNode(
@@ -34,7 +34,7 @@ export class TestHelper {
       false,
       true,
     );
-  };
+  }
 
   static nodeParser2 = (node: ITestDataPId, level: number) => {
     return new TreeNode(
@@ -46,13 +46,13 @@ export class TestHelper {
       false,
       true,
     );
-  };
+  }
 
   static getRoot = () => observableOf([...TreeMockData.simpleHierarchicalData]);
   static getChildren = (node: ITreeNode) => node.data.children;
 
   // Get branch for TreeMockData.dataWithParentId
-  static getBranch = (nodeId: string, parentId: string, nodeType: string) => {
+  static getBranch = (nodeId: string) => {
     const flatTree = [];
     const flattenTreeDeep = (nodeList: any[]) => {
       nodeList.forEach((node) => {
@@ -77,7 +77,7 @@ export class TestHelper {
     buildBranch(nodeId);
 
     return result.reverse();
-  };
+  }
 }
 
 export class CollectionViewerMock implements CollectionViewer {

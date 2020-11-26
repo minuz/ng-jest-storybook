@@ -1,19 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'lib-welcome',
-  template: `
-    <p>
-      welcome works!
-    </p>
-  `,
-  styles: []
+  template: ` <p>welcome works!</p> `,
+  styles: [],
 })
-export class WelcomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class WelcomeComponent {}

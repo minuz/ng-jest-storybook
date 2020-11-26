@@ -1,0 +1,19 @@
+node_modules
+
+# Manually ignoring those types because ESLint windows still scan them
+**/jest.config.js
+**/*.stories.*
+**/*.html
+**/*.scss
+**/*.json
+**/*.pdf
+**/*.otf
+**/*.ttf
+**/*.svg
+**/*.png
+**/*.md
+**/*.ico
+**/*.txt
+**/*.manifest
+**/*.webmanifest
+**/browserslist

@@ -19,7 +19,8 @@ describe('Tree datasource => ', () => {
     );
 
     // To test in isolation, will simulate what the rendered control would do.
-    dataSource.connect(null).subscribe();
+    dataSource.connect().subscribe();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     dataSource.initComplete.subscribe((started) => (initComplete = started));
   });
 

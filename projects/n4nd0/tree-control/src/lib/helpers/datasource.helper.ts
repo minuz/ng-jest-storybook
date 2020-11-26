@@ -4,9 +4,6 @@ import { TreeviewDataSource } from '../treeview.datasource';
 
 /**
  * Helper class for the TreeviewDataSource
- *
- * @export
- * @class DataSourceHelper
  */
 export class DataSourceHelper {
   get treeControl() {
@@ -21,11 +18,6 @@ export class DataSourceHelper {
 
   /**
    * When dragging a node, this method calculates the expanding area where the node can be dropped.
-   *
-   * @static
-   * @param {DragEvent} event
-   * @returns
-   * @memberof DataSourceHelper
    */
   static handleDragArea(event: DragEvent) {
     let dragNodeExpandOverArea;
@@ -43,13 +35,6 @@ export class DataSourceHelper {
 
   /**
    * Method that determines the node level based on target node and the provided position to be dropped.
-   *
-   * @param {TreeControl} treeControl
-   * @param {ITreeNode} target
-   * @param {DropPosition} position
-   * @param {ITreeNode} newNode
-   * @returns
-   * @memberof DataSourceHelper
    */
   getInsertPosition(
     treeControl: TreeControl,
@@ -89,10 +74,6 @@ export class DataSourceHelper {
 
   /**
    * Helper to append the branch items into the current tree
-   *
-   * @param {ITreeNode[]} branch
-   * @returns
-   * @memberof DataSourceHelper
    */
   appendBranchItems(branch: ITreeNode[]) {
     const rootNode = branch[0];
@@ -130,10 +111,6 @@ export class DataSourceHelper {
    * Some data may not be in the correct order so we order the received data
    * based on the existence of parentId.
    * In case the data does not have a parentId, the order must be handled on the getBranch
-   *
-   * @param {any[]} branch
-   * @returns
-   * @memberof DataSourceHelper
    */
   orderBranch(branch: any[]) {
     if (branch.some((n) => n.parentId)) {

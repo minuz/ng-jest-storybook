@@ -6,20 +6,12 @@ import { TreeControl } from '../treeview.control';
 /**
  * Helper class for the `TreeControl`.
  * It contains abstractions to make the `TreeControl` methods more readable.
- *
- * @export
- * @class TreeControlHelper
  */
 export class TreeControlHelper {
   constructor(public tree: TreeControl) {}
 
   /**
    * Parse an array of raw data using the provided node parser.
-   *
-   * @param {any[]} data
-   * @param {ITreeNode} [parent]
-   * @returns {ITreeNode[]}
-   * @memberof TreeControl
    */
   toTreeNode(data: any[], parent?: ITreeNode): ITreeNode[] {
     return data.map((n) =>
@@ -31,8 +23,6 @@ export class TreeControlHelper {
    * Pipeable method that parses a single node to ITreeNode.
    * If the node already exist on the tree, it fetches it than update the node details,
    * Trigger the `trackChange()` and return the updated node.
-   *
-   * @memberof TreeControlHelper
    */
   parseOrUpdate = (source: Observable<any>) =>
     source.pipe(
@@ -41,16 +31,11 @@ export class TreeControlHelper {
           this.parseOrUpdateInternal(node, index),
         ),
       ),
-    );
+    )
 
   /**
    * Given a parent node (pNode), find its children.
    * This method mutates the data.
-   *
-   * @param {ITreeNode} pNode
-   * @param {ITreeNode[]} dataNodes
-   * @returns
-   * @memberof TreeControlHelper
    */
   findChildren(pNode: ITreeNode, dataNodes: ITreeNode[]) {
     pNode.data.children = [];
